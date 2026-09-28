@@ -130,7 +130,7 @@ const TitleScene = {
     text(GAME_TITLE, W / 2 + 4, 250, { size: 108, align: 'center', color: '#ff2a2a', stroke: 14 });
     text(GAME_TITLE, W / 2, 246, { size: 108, align: 'center', color: '#fff', stroke: 0, alpha: 0.12 });
     text('8 FIGHTERS  ·  5 STAGES  ·  v0.1 PROTOTYPE', W / 2, 296, { size: 20, align: 'center', color: '#ffd23a', stroke: 4 });
-    if (blink()) text('PRESS ENTER', W / 2, 600, { size: 40, align: 'center', stroke: 7 });
+    if (blink()) text(Touch.enabled ? 'TAP TO START' : 'PRESS ENTER', W / 2, 600, { size: 40, align: 'center', stroke: 7 });
   },
 };
 
