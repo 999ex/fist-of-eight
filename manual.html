@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIST OF EIGHT 操作マニュアル</title>
+<style>
+  :root {
+    --bg: #0b0b12; --panel: #161622; --panel2: #1f1f2e; --line: #2e2e44;
+    --text: #ececf4; --sub: #a9a9c0; --red: #ff3a3a; --gold: #ffd23a; --cyan: #6ad8ff; --pink: #ff8fb0;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.7;
+    font-family: "Yu Gothic", "YuGothic", "Hiragino Sans", "Meiryo", sans-serif; }
+  header { background: linear-gradient(135deg, #3a0008, #0b0b12 60%); padding: 36px 16px 28px; text-align: center; border-bottom: 2px solid var(--red); }
+  header h1 { margin: 0; font: italic 900 clamp(32px, 7vw, 56px)/1.1 "Arial Black", Impact, sans-serif; color: var(--red); letter-spacing: 1px; text-shadow: 3px 3px 0 #000; }
+  header p { margin: 8px 0 0; color: var(--gold); font-weight: 700; }
+  header .play { display: inline-block; margin-top: 16px; padding: 10px 26px; background: var(--red); color: #fff; font-weight: 900; border-radius: 999px; text-decoration: none; }
+  nav { position: sticky; top: 0; z-index: 5; background: rgba(11,11,18,.95); border-bottom: 1px solid var(--line); display: flex; gap: 4px; overflow-x: auto; padding: 8px 12px; }
+  nav a { flex: none; color: var(--text); text-decoration: none; padding: 6px 12px; border-radius: 999px; background: var(--panel2); font-size: 14px; font-weight: 700; }
+  nav a:hover { background: var(--red); }
+  main { max-width: 1000px; margin: 0 auto; padding: 8px 16px 60px; }
+  section { margin-top: 36px; }
+  h2 { font-size: 24px; margin: 0 0 14px; padding-left: 12px; border-left: 6px solid var(--red); }
+  h3 { font-size: 18px; margin: 22px 0 8px; color: var(--gold); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--sub); font-weight: 700; font-size: 13px; }
+  .scroll { overflow-x: auto; }
+  kbd { display: inline-block; min-width: 26px; padding: 1px 7px; margin: 1px; border: 1px solid #555; border-bottom-width: 3px; border-radius: 6px; background: #26263a; font: 700 13px/1.6 Consolas, monospace; text-align: center; color: #fff; }
+  .btn { display: inline-block; padding: 0 9px; border-radius: 999px; font-size: 13px; font-weight: 900; color: #fff; background: #333; border: 1px solid #fff5; }
+  .btn.sp { background: #b01a3a; } .btn.sa { background: #c89a00; }
+  .note { color: var(--sub); font-size: 14px; }
+  ul { padding-left: 1.3em; margin: 6px 0; }
+  li { margin: 3px 0; }
+  /* スマホ画面の図 */
+  .phone { position: relative; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; margin: 0 auto;
+    background: linear-gradient(#2b1a30, #140c18); border: 6px solid #333; border-radius: 22px; overflow: hidden; }
+  .phone .hud { position: absolute; top: 4%; left: 6%; right: 6%; display: flex; justify-content: space-between; align-items: center; }
+  .phone .bar { width: 40%; height: 9px; background: var(--gold); border: 1px solid #fff; }
+  .phone .timer { color: #fff; font: 900 16px "Arial Black", sans-serif; background: #000a; padding: 0 6px; border: 1px solid #fff; }
+  .phone .pause { position: absolute; top: 15%; left: 50%; transform: translateX(-50%); font-size: 10px; color: #fff; }
+  .phone .pad { position: absolute; left: 4.7%; bottom: 8.3%; width: 18%; aspect-ratio: 1; border-radius: 50%; background: #0008; border: 2px solid #fff; }
+  .phone .pad::after { content: ""; position: absolute; left: 50%; top: 50%; width: 36%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--red); }
+  .phone .b { position: absolute; border-radius: 50%; border: 2px solid #fff; background: #222c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: clamp(8px, 1.8vw, 13px); }
+  .phone .lbl { position: absolute; font-size: clamp(9px, 2vw, 12px); color: var(--gold); font-weight: 700; }
+  .chars { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+  .char { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .char .top { display: flex; gap: 12px; padding: 12px; align-items: center; }
+  .char img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; background: #fff; flex: none; }
+  .char h4 { margin: 0; font: italic 900 18px "Arial Black", sans-serif; }
+  .char .arch { color: var(--sub); font-size: 13px; }
+  .char table { font-size: 13px; }
+  .char td:first-child { width: 48%; }
+  .sup { color: var(--gold); }
+  .cmd { font-family: Consolas, "Yu Gothic", monospace; white-space: nowrap; }
+  .mob { color: var(--pink); white-space: nowrap; }
+  footer { text-align: center; color: var(--sub); font-size: 13px; padding: 30px 16px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <h1>FIST OF EIGHT</h1>
+  <p>操作マニュアル（PC / スマホ）</p>
+  <a class="play" href="./">▶ ゲームをプレイ</a>
+</header>
+<nav>
+  <a href="#start">はじめに</a>
+  <a href="#pc">PCの操作</a>
+  <a href="#phone">スマホの操作</a>
+  <a href="#basic">基本テクニック</a>
+  <a href="#special">必殺技の出し方</a>
+  <a href="#chars">キャラ別技表</a>
+  <a href="#rules">ルール</a>
+</nav>
+<main>
+
+<section id="start">
+  <h2>はじめに</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">遊び方の流れ</h3>
+      <ol>
+        <li>タイトル画面で <kbd>Enter</kbd> ／ 画面をタップ</li>
+        <li>モードを選ぶ</li>
+        <li>キャラクターを選ぶ（1人用は「自分 → 相手」の順）</li>
+        <li>ステージを選ぶ（「?」はランダム）</li>
+        <li>先に2ラウンド取った方の勝ち！</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">モード</h3>
+      <ul>
+        <li><b>VS CPU</b>：コンピューターと対戦（強さ 1〜5）</li>
+        <li><b>2P VERSUS</b>：1台のPCで2人対戦（キーボード or ゲームパッド）</li>
+        <li><b>TRAINING</b>：練習用。体力・ゲージ無限。相手の動き（立つ／しゃがむ／ガード／CPU）をポーズメニューで変更</li>
+      </ul>
+      <p class="note">CPUの強さはモード画面の「CPU LEVEL」で変更できます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="pc">
+  <h2>PCの操作（キーボード）</h2>
+  <div class="card scroll">
+    <table>
+      <tr><th>操作</th><th>1P</th><th>2P</th></tr>
+      <tr><td>移動・ジャンプ・しゃがみ</td><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></td></tr>
+      <tr><td>パンチ（P）</td><td><kbd>J</kbd></td><td><kbd>テンキー1</kbd> / <kbd>,</kbd></td></tr>
+      <tr><td>キック（K）</td><td><kbd>K</kbd></td><td><kbd>テンキー2</kbd> / <kbd>.</kbd></td></tr>
+      <tr><td>投げ（P+K）</td><td><kbd>L</kbd></td><td><kbd>テンキー3</kbd> / <kbd>/</kbd></td></tr>
+      <tr><td>ワンボタン必殺技</td><td><kbd>U</kbd></td><td><kbd>テンキー4</kbd></td></tr>
+      <tr><td>超必殺技（ゲージMAX）</td><td><kbd>I</kbd></td><td><kbd>テンキー5</kbd></td></tr>
+      <tr><td>ポーズ</td><td colspan="2"><kbd>Esc</kbd> / <kbd>Enter</kbd> / <kbd>P</kbd></td></tr>
+      <tr><td>メニュー：決定 / 戻る</td><td><kbd>Enter</kbd><kbd>J</kbd> / <kbd>Esc</kbd><kbd>K</kbd></td><td><kbd>テンキー1</kbd> / <kbd>テンキー2</kbd></td></tr>
+      <tr><td>サウンドON/OFF・全画面</td><td colspan="2"><kbd>M</kbd> ・ <kbd>F</kbd></td></tr>
+    </table>
+    <p class="note">1人用モードでは矢印キー側でも1Pを操作できます。ゲームパッド（Xbox系配置）にも対応：X/Y＝P、A/B＝K、RB＝投げ、LB＝必殺、LT/RT＝超必殺、START＝ポーズ。</p>
+    <p class="note">PCで遊ぶときは <b>start.bat</b> から起動してください（index.html を直接開くと動きません）。公開版URLならブラウザで開くだけでOKです。</p>
+  </div>
+</section>
+
+<section id="phone">
+  <h2>スマホの操作</h2>
+  <div class="card">
+    <p><b>スマホは横向き</b>で遊びます。バトル中は画面にボタンが表示されます。</p>
+    <div class="phone" aria-label="スマホ画面のボタン配置">
+      <div class="hud"><div class="bar"></div><div class="timer">99</div><div class="bar"></div></div>
+      <div class="pause">↑タイマーをタップでポーズ</div>
+      <div class="pad"></div>
+      <div class="lbl" style="left:5%;bottom:42%">方向パッド</div>
+      <div class="b" style="left:63%;bottom:5%;width:6.9%;aspect-ratio:1;background:#c89a00c0">超必殺</div>
+      <div class="b" style="left:72.6%;bottom:6.8%;width:8.75%;aspect-ratio:1">P</div>
+      <div class="b" style="left:84.3%;bottom:14.4%;width:8.75%;aspect-ratio:1">K</div>
+      <div class="b" style="left:73.2%;bottom:26.7%;width:7.5%;aspect-ratio:1;background:#b01a3ac0">必殺</div>
+      <div class="b" style="left:85.2%;bottom:35.5%;width:6.9%;aspect-ratio:1">投げ</div>
+    </div>
+    <div class="scroll" style="margin-top:14px">
+      <table>
+        <tr><th>ボタン</th><th>はたらき</th></tr>
+        <tr><td>方向パッド（左下）</td><td>指を置いたまま滑らせて移動。上＝ジャンプ、下＝しゃがみ、相手と逆＝ガード</td></tr>
+        <tr><td><span class="btn">P</span> <span class="btn">K</span></td><td>パンチ／キック</td></tr>
+        <tr><td><span class="btn">投げ</span></td><td>相手の近くで押すと投げ</td></tr>
+        <tr><td><span class="btn sp">必殺</span></td><td>ワンボタン必殺技。方向パッドと組み合わせて4種類（<a href="#special" style="color:var(--pink)">下の表</a>）</td></tr>
+        <tr><td><span class="btn sa">超必殺</span></td><td>ゲージがMAX（100）のとき超必殺技</td></tr>
+        <tr><td>タイマー部分</td><td>タップでポーズ（技表の確認・キャラ選択に戻るなど）</td></tr>
+      </table>
+    </div>
+    <h3>メニュー画面</h3>
+    <ul>
+      <li>項目を<b>タップ</b>で選択</li>
+      <li>キャラクター・ステージは <b>1回タップで選択 → もう1回タップで決定</b></li>
+      <li>左上の <b>「◀ 戻る」</b> で前の画面へ</li>
+    </ul>
+    <p class="note">縦向きのままだと「横向きにしてください」と表示されます。iPhoneは全画面にならないため、Safariの「ホーム画面に追加」から開くと画面を広く使えます。スマホでは1人用（VS CPU・TRAINING）がおすすめです。</p>
+  </div>
+</section>
+
+<section id="basic">
+  <h2>基本テクニック</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">移動・防御</h3>
+      <ul>
+        <li><b>ガード</b>：相手と逆方向を入れる（立ちガード）</li>
+        <li><b>しゃがみガード</b>：斜め後ろ下（足払いなど下段を防ぐ）</li>
+        <li><b>ジャストガード</b>：攻撃が当たる直前にガードを入れると硬直が短く、ゲージも増える</li>
+        <li><b>ダッシュ</b>：前を2回（→→）／ <b>バックステップ</b>：後ろを2回（←←）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">攻撃</h3>
+      <ul>
+        <li>立ち・しゃがみ・ジャンプ中でP／Kの技が変わる</li>
+        <li><b>しゃがみK</b> は足払い（当たるとダウン）</li>
+        <li><b>ジャンプ攻撃</b>は立ちガードでないと防げない</li>
+        <li><b>投げ</b>はガードできない（近距離で P+K）</li>
+        <li><b>キャンセル</b>：通常技が当たった瞬間に必殺技を入力するとつながる。必殺技 → 超必殺技もOK</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="special">
+  <h2>必殺技の出し方</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">① かんたん：ワンボタン</h3>
+      <table>
+        <tr><th>入力</th><th>PC（1P）</th><th>スマホ</th></tr>
+        <tr><td>必殺技 1</td><td><kbd>U</kbd></td><td><span class="btn sp">必殺</span></td></tr>
+        <tr><td>必殺技 2</td><td><kbd>S</kbd>+<kbd>U</kbd></td><td>↓ + <span class="btn sp">必殺</span></td></tr>
+        <tr><td>必殺技 3</td><td>後ろ+<kbd>U</kbd></td><td>← + <span class="btn sp">必殺</span></td></tr>
+        <tr><td>必殺技 4</td><td>前+<kbd>U</kbd></td><td>→ + <span class="btn sp">必殺</span></td></tr>
+        <tr><td>空中の必殺技</td><td>ジャンプ中に <kbd>U</kbd></td><td>ジャンプ中に <span class="btn sp">必殺</span></td></tr>
+        <tr><td>超必殺技</td><td><kbd>I</kbd></td><td><span class="btn sa">超必殺</span></td></tr>
+      </table>
+      <p class="note">←／→ はキャラが右向きのときの表記です。左向きのときは逆になります（「前」＝相手の方向）。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">② 本格派：コマンド入力（PC向け）</h3>
+      <p>方向を順番に入れてから P か K を押します。表記は右向き基準です。</p>
+      <table>
+        <tr><th>表記</th><th>入れ方（1P・右向き）</th></tr>
+        <tr><td class="cmd">↓↘→ + P</td><td><kbd>S</kbd> → <kbd>S</kbd>+<kbd>D</kbd> → <kbd>D</kbd> → <kbd>J</kbd></td></tr>
+        <tr><td class="cmd">→↓↘ + P</td><td><kbd>D</kbd> → <kbd>S</kbd> → <kbd>S</kbd>+<kbd>D</kbd> → <kbd>J</kbd></td></tr>
+        <tr><td class="cmd">↓↙← + K</td><td><kbd>S</kbd> → <kbd>S</kbd>+<kbd>A</kbd> → <kbd>A</kbd> → <kbd>K</kbd></td></tr>
+        <tr><td class="cmd">↓↘→ ↓↘→ + P</td><td>↓↘→ を2回続けて → <kbd>J</kbd></td></tr>
+      </table>
+      <p class="note">途中の斜め入力は省略してもOK（↓→+P でも出ます）。コマンド入力はゲームパッドでも使えます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="chars">
+  <h2>キャラクター別 技表</h2>
+  <p class="note">「スマホ」列はワンボタン操作での出し方です（PCでは <span class="btn sp">必殺</span>＝<kbd>U</kbd>、<span class="btn sa">超必殺</span>＝<kbd>I</kbd>）。数値は moves.csv から自動表示しています。</p>
+  <div id="charList" class="chars"><div class="card">読み込み中...</div></div>
+</section>
+
+<section id="rules">
+  <h2>ルール</h2>
+  <div class="card">
+    <ul>
+      <li>1ラウンド <b>99秒</b>、先に <b>2ラウンド</b> 取った方が勝ち</li>
+      <li>時間切れのときは、残り体力の<b>割合</b>が多い方の勝ち</li>
+      <li><b>ゲージ（SUPER）</b>は攻撃を当てる・ガードする・攻撃を受けると増える。一部の必殺技はゲージを20消費、超必殺技は100消費</li>
+      <li><b>NOIR</b> は専用の <b>VOID</b> ゲージ。時間で少しずつ回復し、50以上で飛び道具が速くなる</li>
+      <li>必殺技はガードされても少しダメージ（削り）が入る</li>
+      <li>コンボは3ヒット目からダメージが少しずつ減る</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer>FIST OF EIGHT v0.1 prototype</footer>
+
+<script src="js/config.js"></script>
+<script>
+(async () => {
+  const CFG = Object.assign({ imgExt: null }, window.GAME_CONFIG || {});
+  const img = p => CFG.imgExt ? p.replace(/\.png$/i, CFG.imgExt) : p;
+  const FACE = { RYUJI: [51, 15], LUNA: [46, 19], JACK: [58, 10], MEILIN: [50, 19], KAI: [62, 23], AKARI: [60, 29], VIKTOR: [58, 10], NOIR: [51, 11] };
+  const parse = t => {
+    t = t.replace(/^﻿/, ''); const rows = []; let row = [], f = '', q = false;
+    for (let i = 0; i < t.length; i++) { const c = t[i];
+      if (q) { if (c === '"') { if (t[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true; else if (c === ',') { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(f); f = ''; if (row.some(v => v)) rows.push(row); row = []; }
+      else f += c; }
+    row.push(f); if (row.some(v => v)) rows.push(row);
+    const h = rows.shift(); return rows.map(r => Object.fromEntries(h.map((k, i) => [k.trim(), (r[i] || '').trim()])));
+  };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const box = document.getElementById('charList');
+  try {
+    const [cs, ms] = await Promise.all(['characters.csv', 'moves.csv'].map(f => fetch(f).then(r => { if (!r.ok) throw 0; return r.text(); })));
+    const chars = parse(cs), moves = parse(ms);
+    box.innerHTML = chars.map(c => {
+      const list = moves.filter(m => m.character_id === c.character_id);
+      const ground = list.filter(m => m.category !== 'Super' && !/^air/i.test(m.command));
+      const quick = m => m.category === 'Super' ? '<span class="btn sa">超必殺</span>'
+        : /^air/i.test(m.command) ? 'ジャンプ中 <span class="btn sp">必殺</span>'
+        : ['', '↓ + ', '← + ', '→ + '][ground.indexOf(m)] + '<span class="btn sp">必殺</span>';
+      const [fx, fy] = FACE[c.character_id] || [50, 15];
+      return `<div class="char">
+        <div class="top"><img src="${encodeURI(img('キャラクター/' + c.character_id + '.png'))}" style="object-position:${fx}% ${fy}%" alt="">
+          <div><h4>${esc(c.display_name)}</h4><div class="arch">${esc(c.archetype)} ・ HP ${esc(c.hp)} ・ ${esc(c.meter_type)}</div></div></div>
+        <div class="scroll"><table>
+          <tr><th>技</th><th>コマンド</th><th>スマホ</th></tr>
+          ${list.map(m => `<tr><td class="${m.category === 'Super' ? 'sup' : ''}">${esc(m.move_name)}${+m.meter_cost ? ` <span class="note">(ゲージ${esc(m.meter_cost)})</span>` : ''}</td>
+            <td class="cmd">${esc(m.command)}</td><td class="mob">${quick(m)}</td></tr>`).join('')}
+        </table></div></div>`;
+    }).join('');
+  } catch (e) {
+    box.innerHTML = '<div class="card">技表はゲームと同じ場所（start.bat で起動したサーバー、または公開URL）で開くと表示されます。</div>';
+  }
+})();
+</script>
+</body>
+</html>

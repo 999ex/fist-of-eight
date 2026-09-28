@@ -2,6 +2,9 @@
 
 ブラウザで遊べる2D対戦格闘ゲーム（v0.1 プロトタイプ）。PC・スマホ対応。
 
+- プレイ: https://999ex.github.io/fist-of-eight/
+- 操作マニュアル: https://999ex.github.io/fist-of-eight/manual.html
+
 ## 操作
 **スマホ**（横向き）: 左下の方向パッドで移動、右下のボタンで攻撃
 - P / K：パンチ / キック　投げ：P+K
