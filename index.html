@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<title>FIST OF EIGHT</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center;
+    touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; overscroll-behavior: none; }
+  canvas { display: block; background: #05050a; image-rendering: auto; touch-action: none; }
+  #rotate { display: none; position: fixed; inset: 0; background: #05050a; color: #fff; z-index: 10;
+    align-items: center; justify-content: center; flex-direction: column; font: bold 20px "Yu Gothic", "Hiragino Sans", sans-serif; text-align: center; }
+  #rotate .icon { font-size: 64px; margin-bottom: 16px; }
+  @media (orientation: portrait) and (pointer: coarse) { #rotate { display: flex; } }
+</style>
+</head>
+<body>
+<canvas id="game" width="1280" height="720"></canvas>
+<div id="rotate"><div class="icon">📱↻</div>スマホを横向きにしてください</div>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/fighter.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

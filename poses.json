@@ -1,0 +1,58 @@
+{
+ "AKARI": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "JACK": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "KAI": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "LUNA": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "MEILIN": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "NOIR": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "RYUJI": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ],
+ "VIKTOR": [
+  "crouch",
+  "hit",
+  "idle",
+  "kick",
+  "punch"
+ ]
+}

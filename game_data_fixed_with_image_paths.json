@@ -1,0 +1,505 @@
+{
+  "version": "0.2",
+  "encoding": "UTF-8",
+  "asset_rules": {
+    "base_directory": ".",
+    "character_directory": "キャラクター",
+    "stage_directory": "バトルフィールド",
+    "note": "If actual file names differ, update the image_path values or rename files to match these paths."
+  },
+  "characters": [
+    {
+      "character_id": "RYUJI",
+      "name": "Ryuji Kagami",
+      "display_name": "RYUJI KAGAMI",
+      "country": "Japan",
+      "archetype": "All-Rounder",
+      "combat_style": "Karate + modern street fighting",
+      "hp": 1000,
+      "attack": 8,
+      "defense": 7,
+      "speed": 7,
+      "range": 7,
+      "technique": 6,
+      "difficulty": 2,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/RYUJI.png",
+      "select_portrait_path": "キャラクター/RYUJI.png",
+      "vs_image_path": "キャラクター/RYUJI.png",
+      "battle_sprite_path": "キャラクター/RYUJI.png"
+    },
+    {
+      "character_id": "LUNA",
+      "name": "Luna Valez",
+      "display_name": "LUNA VALEZ",
+      "country": "Spain",
+      "archetype": "Rushdown / Combo",
+      "combat_style": "Kickboxing + dance-inspired movement",
+      "hp": 880,
+      "attack": 7,
+      "defense": 5,
+      "speed": 10,
+      "range": 6,
+      "technique": 8,
+      "difficulty": 3,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/LUNA.png",
+      "select_portrait_path": "キャラクター/LUNA.png",
+      "vs_image_path": "キャラクター/LUNA.png",
+      "battle_sprite_path": "キャラクター/LUNA.png"
+    },
+    {
+      "character_id": "JACK",
+      "name": "Jack Iron",
+      "display_name": "JACK IRON",
+      "country": "USA",
+      "archetype": "Power / Armor",
+      "combat_style": "Heavyweight boxing",
+      "hp": 1250,
+      "attack": 10,
+      "defense": 9,
+      "speed": 3,
+      "range": 5,
+      "technique": 4,
+      "difficulty": 2,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/JACK.png",
+      "select_portrait_path": "キャラクター/JACK.png",
+      "vs_image_path": "キャラクター/JACK.png",
+      "battle_sprite_path": "キャラクター/JACK.png"
+    },
+    {
+      "character_id": "MEILIN",
+      "name": "Mei Lin",
+      "display_name": "MEI LIN",
+      "country": "Japan",
+      "archetype": "Counter / Defense",
+      "combat_style": "Japanese soft-style martial arts + palm techniques",
+      "hp": 940,
+      "attack": 6,
+      "defense": 8,
+      "speed": 7,
+      "range": 6,
+      "technique": 10,
+      "difficulty": 4,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/MEILIN.png",
+      "select_portrait_path": "キャラクター/MEILIN.png",
+      "vs_image_path": "キャラクター/MEILIN.png",
+      "battle_sprite_path": "キャラクター/MEILIN.png"
+    },
+    {
+      "character_id": "KAI",
+      "name": "Kai Storm",
+      "display_name": "KAI STORM",
+      "country": "Brazil",
+      "archetype": "Trickster / Mobility",
+      "combat_style": "Capoeira",
+      "hp": 920,
+      "attack": 7,
+      "defense": 5,
+      "speed": 9,
+      "range": 7,
+      "technique": 9,
+      "difficulty": 4,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/KAI.png",
+      "select_portrait_path": "キャラクター/KAI.png",
+      "vs_image_path": "キャラクター/KAI.png",
+      "battle_sprite_path": "キャラクター/KAI.png"
+    },
+    {
+      "character_id": "AKARI",
+      "name": "Akari",
+      "display_name": "AKARI",
+      "country": "Japan",
+      "archetype": "Assassin / Speed",
+      "combat_style": "Urban ninjutsu + parkour",
+      "hp": 820,
+      "attack": 8,
+      "defense": 4,
+      "speed": 10,
+      "range": 7,
+      "technique": 9,
+      "difficulty": 5,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/AKARI.png",
+      "select_portrait_path": "キャラクター/AKARI.png",
+      "vs_image_path": "キャラクター/AKARI.png",
+      "battle_sprite_path": "キャラクター/AKARI.png"
+    },
+    {
+      "character_id": "VIKTOR",
+      "name": "Viktor Volkov",
+      "display_name": "VIKTOR VOLKOV",
+      "country": "Eastern Europe",
+      "archetype": "Grappler / Tank",
+      "combat_style": "Sambo + wrestling",
+      "hp": 1300,
+      "attack": 9,
+      "defense": 10,
+      "speed": 2,
+      "range": 4,
+      "technique": 6,
+      "difficulty": 3,
+      "meter_type": "SUPER",
+      "image_path": "キャラクター/VIKTOR.png",
+      "select_portrait_path": "キャラクター/VIKTOR.png",
+      "vs_image_path": "キャラクター/VIKTOR.png",
+      "battle_sprite_path": "キャラクター/VIKTOR.png"
+    },
+    {
+      "character_id": "NOIR",
+      "name": "Noir",
+      "display_name": "NOIR",
+      "country": "Unknown",
+      "archetype": "Boss / Resource",
+      "combat_style": "Supernatural assassin combat",
+      "hp": 1050,
+      "attack": 9,
+      "defense": 7,
+      "speed": 8,
+      "range": 9,
+      "technique": 10,
+      "difficulty": 5,
+      "meter_type": "VOID",
+      "image_path": "キャラクター/NOIR.png",
+      "select_portrait_path": "キャラクター/NOIR.png",
+      "vs_image_path": "キャラクター/NOIR.png",
+      "battle_sprite_path": "キャラクター/NOIR.png"
+    }
+  ],
+  "moves": [
+    {
+      "character_id": "RYUJI",
+      "move_name": "Dragon Impact / 龍撃拳",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 80,
+      "startup_frames": 14,
+      "active_frames": 3,
+      "recovery_frames": 22,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "RYUJI",
+      "move_name": "Crimson Rise / 紅蓮昇",
+      "category": "Special",
+      "command": "→↓↘ + P",
+      "damage": 110,
+      "startup_frames": 6,
+      "active_frames": 6,
+      "recovery_frames": 30,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "RYUJI",
+      "move_name": "Gale Kick / 烈風脚",
+      "category": "Special",
+      "command": "↓↙← + K",
+      "damage": 95,
+      "startup_frames": 11,
+      "active_frames": 7,
+      "recovery_frames": 20,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "RYUJI",
+      "move_name": "True Dragon God Strike / 真・龍神撃",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + P",
+      "damage": 330,
+      "startup_frames": 7,
+      "active_frames": 25,
+      "recovery_frames": 45,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "LUNA",
+      "move_name": "Crimson Heel",
+      "category": "Special",
+      "command": "↓↘→ + K",
+      "damage": 85,
+      "startup_frames": 8,
+      "active_frames": 4,
+      "recovery_frames": 18,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "LUNA",
+      "move_name": "Rose Spin",
+      "category": "Special",
+      "command": "↓↙← + K",
+      "damage": 90,
+      "startup_frames": 9,
+      "active_frames": 10,
+      "recovery_frames": 19,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "LUNA",
+      "move_name": "Crimson Waltz",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + K",
+      "damage": 300,
+      "startup_frames": 5,
+      "active_frames": 30,
+      "recovery_frames": 38,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "JACK",
+      "move_name": "Iron Jab",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 120,
+      "startup_frames": 10,
+      "active_frames": 4,
+      "recovery_frames": 22,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "JACK",
+      "move_name": "Breaker Hook",
+      "category": "Special",
+      "command": "→↓↘ + P",
+      "damage": 145,
+      "startup_frames": 12,
+      "active_frames": 5,
+      "recovery_frames": 28,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "JACK",
+      "move_name": "Last Round",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + P",
+      "damage": 380,
+      "startup_frames": 8,
+      "active_frames": 24,
+      "recovery_frames": 48,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "MEILIN",
+      "move_name": "Flowing Moon / 流月",
+      "category": "Special",
+      "command": "↓↙← + P",
+      "damage": 70,
+      "startup_frames": 5,
+      "active_frames": 5,
+      "recovery_frames": 16,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "MEILIN",
+      "move_name": "Wind Flower Palm / 風華掌",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 85,
+      "startup_frames": 13,
+      "active_frames": 4,
+      "recovery_frames": 19,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "MEILIN",
+      "move_name": "Moonflower: Eightfold Mist / 月華・八重霞",
+      "category": "Super",
+      "command": "↓↙← ↓↙← + P",
+      "damage": 310,
+      "startup_frames": 4,
+      "active_frames": 28,
+      "recovery_frames": 34,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "KAI",
+      "move_name": "Storm Wheel",
+      "category": "Special",
+      "command": "↓↘→ + K",
+      "damage": 95,
+      "startup_frames": 10,
+      "active_frames": 9,
+      "recovery_frames": 19,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "KAI",
+      "move_name": "Sky Samba",
+      "category": "Special",
+      "command": "↓↓ + K",
+      "damage": 105,
+      "startup_frames": 8,
+      "active_frames": 10,
+      "recovery_frames": 24,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "KAI",
+      "move_name": "Carnival Storm",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + K",
+      "damage": 320,
+      "startup_frames": 6,
+      "active_frames": 34,
+      "recovery_frames": 40,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "AKARI",
+      "move_name": "Shadow Dash",
+      "category": "Special",
+      "command": "↓↘→ + K",
+      "damage": 45,
+      "startup_frames": 5,
+      "active_frames": 3,
+      "recovery_frames": 11,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "AKARI",
+      "move_name": "Violet Edge",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 70,
+      "startup_frames": 10,
+      "active_frames": 3,
+      "recovery_frames": 17,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "AKARI",
+      "move_name": "Purple Shadow: Zero Form / 紫影・零式",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + P",
+      "damage": 305,
+      "startup_frames": 4,
+      "active_frames": 38,
+      "recovery_frames": 34,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "VIKTOR",
+      "move_name": "Volkov Throw",
+      "category": "Special",
+      "command": "→↘↓↙← + P",
+      "damage": 165,
+      "startup_frames": 6,
+      "active_frames": 2,
+      "recovery_frames": 28,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "VIKTOR",
+      "move_name": "Iron Lariat",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 125,
+      "startup_frames": 13,
+      "active_frames": 9,
+      "recovery_frames": 25,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "VIKTOR",
+      "move_name": "Final Avalanche",
+      "category": "Super",
+      "command": "→↘↓↙← → + P",
+      "damage": 410,
+      "startup_frames": 7,
+      "active_frames": 30,
+      "recovery_frames": 55,
+      "meter_cost": 100
+    },
+    {
+      "character_id": "NOIR",
+      "move_name": "Void Hand",
+      "category": "Special",
+      "command": "↓↘→ + P",
+      "damage": 95,
+      "startup_frames": 12,
+      "active_frames": 5,
+      "recovery_frames": 20,
+      "meter_cost": 0
+    },
+    {
+      "character_id": "NOIR",
+      "move_name": "Phase Shift",
+      "category": "Special",
+      "command": "↓↙← + K",
+      "damage": 30,
+      "startup_frames": 4,
+      "active_frames": 2,
+      "recovery_frames": 12,
+      "meter_cost": 10
+    },
+    {
+      "character_id": "NOIR",
+      "move_name": "Zero Dimension",
+      "category": "Super",
+      "command": "↓↘→ ↓↘→ + P+K",
+      "damage": 360,
+      "startup_frames": 5,
+      "active_frames": 40,
+      "recovery_frames": 46,
+      "meter_cost": 100
+    }
+  ],
+  "stages": [
+    {
+      "stage_id": "NEON_CROSSING_TOKYO",
+      "name": "NEON CROSSING TOKYO",
+      "image_path": "バトルフィールド/neon_crossing_tokyo.png"
+    },
+    {
+      "stage_id": "SKYLINE_ROOFTOP",
+      "name": "SKYLINE ROOFTOP",
+      "image_path": "バトルフィールド/skyline_rooftop.png"
+    },
+    {
+      "stage_id": "UNDERGROUND_FIGHT_CLUB",
+      "name": "UNDERGROUND FIGHT CLUB",
+      "image_path": "バトルフィールド/underground_fight_club.png"
+    },
+    {
+      "stage_id": "TEMPLE_OF_WIND",
+      "name": "TEMPLE OF WIND",
+      "image_path": "バトルフィールド/temple_of_wind.png"
+    },
+    {
+      "stage_id": "RIO_STREET_FESTIVAL",
+      "name": "RIO STREET FESTIVAL",
+      "image_path": "バトルフィールド/rio_street_festival.png"
+    }
+  ],
+  "game_rules": {
+    "game_type": "2D/2.5D one-on-one fighting game",
+    "rounds_to_win": 2,
+    "round_time_seconds": 99,
+    "target_fps": 60,
+    "super_meter_max": 100,
+    "cpu_levels": [
+      {
+        "level": 1,
+        "name": "BEGINNER"
+      },
+      {
+        "level": 2,
+        "name": "EASY"
+      },
+      {
+        "level": 3,
+        "name": "NORMAL"
+      },
+      {
+        "level": 4,
+        "name": "HARD"
+      },
+      {
+        "level": 5,
+        "name": "MASTER"
+      }
+    ]
+  }
+}
