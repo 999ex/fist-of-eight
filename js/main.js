@@ -581,6 +581,9 @@ function loop(now) {
     Touch.battleMode = scene === BattleScene && !BattleScene.paused && !BattleScene.moveList;
     Touch.showBack = scene === ModeScene || scene === SelectScene || scene === StageScene || (scene === BattleScene && BattleScene.moveList);
     scene.update();
+    // BGM：バトル中のみ再生（ポーズ中は小さく、バトル以外では停止）
+    const bgmWant = scene !== BattleScene ? 'stopped' : (BattleScene.paused || BattleScene.moveList) ? 'paused' : 'playing';
+    Bgm.sync(bgmWant, BattleScene.battle, Sfx.muted);
     gframe++;
     endInputFrame();
     acc -= STEP;
@@ -598,6 +601,7 @@ requestAnimationFrame(loop);
   try {
     await loadGameData();
     await loadAssets(p => { loadProgress = p; });
+    await Bgm.load();
     setScene(TitleScene);
   } catch (e) {
     console.error(e);

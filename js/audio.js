@@ -68,3 +68,56 @@ const Sfx = (() => {
     },
   };
 })();
+
+// ============================================================
+// BGM（music フォルダの MP3 をバトル中にループ再生）
+// 曲リスト: ローカルは api/music、公開版は music.json（ビルド時に生成）
+// ============================================================
+const Bgm = (() => {
+  let tracks = [], el = null, owner = null, state = 'stopped', fadeTimer = null;
+  const VOLUME = 0.45;
+  async function load() {
+    for (const url of ['api/music', 'music.json']) {
+      try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (res.ok) { tracks = await res.json(); return; }
+      } catch (e) { /* 次を試す */ }
+    }
+  }
+  function fade(to, ms, done) {
+    clearInterval(fadeTimer);
+    const from = el.volume, steps = Math.max(1, Math.round(ms / 30));
+    let i = 0;
+    fadeTimer = setInterval(() => {
+      i++;
+      el.volume = Math.max(0, Math.min(1, from + (to - from) * i / steps));
+      if (i >= steps) { clearInterval(fadeTimer); done && done(); }
+    }, 30);
+  }
+  // 毎フレーム呼ぶ：want = 'playing' | 'paused' | 'stopped'、battle = 現在のバトル（変わったら選曲し直す）
+  function sync(want, battle, muted) {
+    if (!tracks.length) return;
+    if (want !== 'stopped' && owner !== battle) {
+      owner = battle;
+      if (el) { el.pause(); }
+      el = new Audio(encodeURI('music/' + tracks[Math.floor(Math.random() * tracks.length)]));
+      el.loop = true; el.volume = 0; state = 'stopped';
+    }
+    if (!el) return;
+    el.muted = muted;
+    if (want === state) return;
+    if (want === 'playing') {
+      const p = el.play();
+      if (p && p.catch) p.catch(() => { state = 'stopped'; }); // 自動再生が拒否された場合は次の操作で再試行
+      fade(VOLUME, state === 'paused' ? 200 : 1200);
+    } else if (want === 'paused') {
+      fade(0.12, 200);
+    } else {
+      const cur = el;
+      fade(0, 800, () => cur.pause());
+      owner = null;
+    }
+    state = want;
+  }
+  return { load, sync, get tracks() { return tracks; }, get audio() { return el; }, get state() { return state; } };
+})();
